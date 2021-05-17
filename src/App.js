@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Item from "./components/Item/Item";
+import GlobalStyle from "./components/StyledComponents/GlobalStyle";
+import StyledButton from "./components/StyledComponents/StyledButton";
+import StyledForm from "./components/StyledComponents/StyledFrom";
+import StyledInput from "./components/StyledComponents/StyledInput";
 import { API_URL } from "./constans";
 
 function App() {
@@ -25,12 +30,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={city} onChange={handleInput} />
-        <button type="submit">Search</button>
-      </form>
-    </div>
+    <>
+      <GlobalStyle />
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInput
+          type="text"
+          value={city}
+          onChange={handleInput}
+          placeholder="Search weather"
+        />
+        <StyledButton type="submit">Search</StyledButton>
+      </StyledForm>
+      <Item data={data} />
+    </>
   );
 }
 
